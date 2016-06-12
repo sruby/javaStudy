@@ -19,17 +19,25 @@ public class ThreadTest
 
 class ThreadSon extends Thread
 {
-	private int count = 0;
+//	private int count = 0;
+	//为静态变量时可以实现多个线程数据的共享
+	private static int count = 0;
 	
 	@Override
 	public void run()
 	{
 		Thread currentThread = Thread.currentThread();
-		while (count < 10)
+		System.out.println("线程名:"+currentThread.getName()+"线程id:"
+				+currentThread.getId()+",count:"+count+"线程state:"+currentThread.getState());
+					count ++;
+		synchronized (this)
 		{
-			System.out.println("线程名:"+currentThread.getName()+"线程id:"
-		+currentThread.getId()+",count:"+count+"线程state:"+currentThread.getState());
-			count ++;
+			while (count < 10)
+			{
+				System.out.println("线程名:"+currentThread.getName()+"线程id:"
+			+currentThread.getId()+",count:"+count+"线程state:"+currentThread.getState());
+				count ++;
+			}
 		}
 	}
 }
