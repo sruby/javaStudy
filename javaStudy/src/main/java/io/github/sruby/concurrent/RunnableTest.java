@@ -23,12 +23,17 @@ class RunnableImpl implements Runnable
 	public void run()
 	{
 		Thread currentThread = Thread.currentThread();
-		
+		System.out.println("线程名:"+currentThread.getName()+"线程id:"
+				+currentThread.getId()+",count:"+count+"线程state:"+currentThread.getState());
+					count ++;
+		synchronized (this)
+		{
 			while (count < 10)
 			{
 				System.out.println("线程名:"+currentThread.getName()+"线程id:"
 			+currentThread.getId()+",count:"+count+"线程state:"+currentThread.getState());
 				count ++;
 			}
+		}
 	}
 }
