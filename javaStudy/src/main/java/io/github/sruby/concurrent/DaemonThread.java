@@ -21,22 +21,25 @@ public class DaemonThread
 			}
 		});
 		
-		//当此线程不存在时,thread守护线程会停止
+		//当此线程和new线程都消亡时,thread守护线程会停止
 		new Thread(new Runnable()
 		{
 			@Override
 			public void run()
 			{
-				while (true)
-				{
+//				while (true)
+//				{
 					System.out.println("son thread");
-				}
+//				}
 			}
 		}).start();
 		
 		thread.setDaemon(true);
-		
 		thread.start();
 		
+		while (true)
+		{
+			System.out.println("main thread");
+		}
 	}
 }
