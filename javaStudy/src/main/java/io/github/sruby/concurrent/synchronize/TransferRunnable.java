@@ -16,8 +16,15 @@ public class TransferRunnable implements Runnable
 			int from = (int)(num * Math.random());
 			int to = (int)(num * Math.random());
 			double amount = (double)(10000 * Math.random());
-			System.out.println("from:"+from+",to:"+to+",amount:"+amount);
-			bank.transfer(from, to, amount);
+//			System.out.println("from:"+from+",to:"+to+",amount:"+amount);
+			try
+			{
+				bank.transfer(from, to, amount);
+			}
+			catch (InterruptedException e)
+			{
+				e.printStackTrace();
+			}
 			
 			System.out.println("银行总金额"+bank.getTotalBalance());
 //			try

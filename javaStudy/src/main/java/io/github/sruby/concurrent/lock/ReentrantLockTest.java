@@ -1,4 +1,4 @@
-package io.github.sruby.concurrent.synchronize.lock;
+package io.github.sruby.concurrent.lock;
 
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -6,6 +6,7 @@ public class ReentrantLockTest
 {
 	/**
 	 * 每个对象都有自己的ReentrantLock对象,如果在方法内部声明初始化,则不能达到锁的目的
+	 * Synchronize是隐式的使用锁,lock是显式的
 	 */
 	private static ReentrantLock lock = new ReentrantLock();
 	/**
