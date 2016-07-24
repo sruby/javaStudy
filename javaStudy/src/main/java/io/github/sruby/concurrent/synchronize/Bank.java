@@ -1,5 +1,6 @@
 package io.github.sruby.concurrent.synchronize;
 
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -10,6 +11,7 @@ public class Bank
 {
 	private double[] accounts;
 	private ReentrantLock lock = new ReentrantLock();
+	private Condition condition = lock.newCondition();
 	/**
 	 * 
 	 * @param num 账户数量
@@ -41,8 +43,9 @@ public class Bank
 	 * @param from
 	 * @param to
 	 * @param amount
+	 * @throws InterruptedException 
 	 */
-	public void transfer(int from, int to, double amount)
+	public void transfer(int from, int to, double amount) throws InterruptedException
 	{
 		//获得锁,需要执行完try所有语句才会释放,在释放之前,其他线程是处于阻塞状态
 		lock.lock();
@@ -51,10 +54,12 @@ public class Bank
 			if(accounts[from] < amount)
 			{
 				System.out.println("资金不足");
-				return;
+				condition.await();
 			}
+			System.out.println(Thread.currentThread());
 			accounts[from] -= amount;
 			accounts[to] += amount;
+			condition.signalAll();
 		}
 		finally
 		{
@@ -73,7 +78,7 @@ public class Bank
 		double totalBalance = 0;
 		for (int i = 0; i < accounts.length; i++)
 		{
-			System.out.println("每个账户的金额:"+accounts[i]);
+//			System.out.println("每个账户的金额:"+accounts[i]);
 			totalBalance += accounts[i];
 		}
 		return totalBalance;
