@@ -13,7 +13,7 @@ public class ExecutorsTest
 {
 	public static void main(String[] args) throws InterruptedException, ExecutionException
 	{
-		//创建一个缓存线程池:必要时会创建新线程,空闲超过60s,线程会被销毁
+		//1、创建一个缓存线程池:必要时会创建新线程,空闲超过60s,线程会被销毁
 		ExecutorService newCachedThreadPool = Executors.newCachedThreadPool();
 		Future<?> submit = newCachedThreadPool.submit(new Runnable()
 		{
@@ -27,5 +27,17 @@ public class ExecutorsTest
 		
 		System.out.println(submit.isDone());
 		System.out.println(submit.isCancelled());
+		
+		//2、创建一个固定大小的线程池
+		ExecutorService newFixedThreadPool = Executors.newFixedThreadPool(10);
+		Future<?> submit2 = newFixedThreadPool.submit(new Runnable()
+		{
+			
+			@Override
+			public void run()
+			{
+				
+			}
+		});
 	}
 }
