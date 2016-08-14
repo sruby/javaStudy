@@ -6,6 +6,7 @@ package io.github.sruby.interfaceAndInnerClass.innerClass;
  */
 public class AnonymousInnerClassTest
 {
+	private static int a;
 	public static void main(String[] args)
 	{
 		int i = 0;
@@ -16,10 +17,10 @@ public class AnonymousInnerClassTest
 			{
 				/**
 				 * 匿名内部类中只能访问final常量.
-				 * reson:
+				 * reason:
 				 * http://stackoverflow.com/questions/1299837/cannot-refer-to-a-non-final-variable-inside-an-inner-class-defined-in-a-differen
 				 */
-				System.out.println(j);
+				System.out.println(j+a);
 			}
 		}.run();
 	}
