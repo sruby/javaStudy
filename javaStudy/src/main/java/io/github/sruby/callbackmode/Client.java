@@ -1,4 +1,4 @@
-package io.github.sruby.callbackMode;
+package io.github.sruby.callbackmode;
 
 /**
  * 模拟客户端类

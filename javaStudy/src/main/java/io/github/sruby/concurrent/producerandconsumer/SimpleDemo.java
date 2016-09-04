@@ -1,4 +1,4 @@
-package io.github.sruby.concurrent.producerAndConsumer;
+package io.github.sruby.concurrent.producerandconsumer;
 
 /**
  * 简单的生产者消费者模型，只有一个生产者线程和一个消费者线程

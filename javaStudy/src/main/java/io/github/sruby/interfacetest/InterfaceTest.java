@@ -1,4 +1,4 @@
-package io.github.sruby.interfaceTest;
+package io.github.sruby.interfacetest;
 
 import java.util.ArrayList;
 import java.util.Arrays;

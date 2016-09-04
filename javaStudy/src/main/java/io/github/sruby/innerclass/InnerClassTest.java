@@ -1,4 +1,4 @@
-package io.github.sruby.interfaceAndInnerClass.innerClass;
+package io.github.sruby.innerclass;
 
 import java.util.Date;
 
