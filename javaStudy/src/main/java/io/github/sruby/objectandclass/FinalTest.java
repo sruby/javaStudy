@@ -1,4 +1,4 @@
-package io.github.sruby.objectAdnClass;
+package io.github.sruby.objectandclass;
 
 import java.util.Date;
 
