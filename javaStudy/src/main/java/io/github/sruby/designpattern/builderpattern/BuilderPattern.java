@@ -1,4 +1,4 @@
-package io.github.sruby.designPattern.builderpattern;
+package io.github.sruby.designpattern.builderpattern;
 
 /**
  * TODO bysruby

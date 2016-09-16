@@ -1,4 +1,4 @@
-package io.github.sruby.designPattern.singleton;
+package io.github.sruby.designpattern.singleton;
 
 /**
  * 双重锁检测机制

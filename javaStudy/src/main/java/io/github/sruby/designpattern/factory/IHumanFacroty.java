@@ -1,4 +1,4 @@
-package io.github.sruby.designPattern.factory;
+package io.github.sruby.designpattern.factory;
 
 /**
  * 人类工厂借口
