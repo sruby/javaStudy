@@ -1,4 +1,4 @@
-package io.github.sruby.designPattern.factory;
+package io.github.sruby.designpattern.factory;
 
 
 public class YellowHuman extends AbstractHuman

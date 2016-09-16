@@ -1,4 +1,4 @@
-package io.github.sruby.designPattern.singleton;
+package io.github.sruby.designpattern.singleton;
 
 /**
  * 这种写法仍然使用JVM本身机制保证了线程安全问题；由于 SingletonHolder 是私有的，
