@@ -10,29 +10,20 @@ var $ = Zepto,
     // 优化retina, 在retina下这个值是2
     ratio = window.devicePixelRatio || 1,
 
-    // 缩略图大小
     thumbnailWidth = 100 * ratio,
     thumbnailHeight = 100 * ratio,
-
     // Web Uploader实例
     uploader;
 
 // 初始化Web Uploader
 uploader = WebUploader.create({
-
     // 自动上传。
     auto: true,
-
-    // swf文件路径
-    //swf: BASE_URL + '/js/Uploader.swf',
-
     // 文件接收服务端。
-    server: 'http://webuploader.duapp.com/server/fileupload.php',
-
+    server: '/servlet/upload',
     // 选择文件的按钮。可选。
     // 内部根据当前运行是创建，可能是input元素，也可能是flash.
     pick: '#filePicker',
-
     // 只允许选择文件，可选。
     accept: {
         title: 'Images',
