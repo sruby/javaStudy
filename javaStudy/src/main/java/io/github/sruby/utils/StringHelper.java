@@ -9,9 +9,6 @@ import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 
-import sun.io.ByteToCharConverter;
-import sun.io.CharToByteConverter;
-
 public final class StringHelper
 {
 	
@@ -902,61 +899,7 @@ public final class StringHelper
 		return source != null ? source : defaultStr;
 	}
 	
-	/**
-	 * 描述：
-	 * 作者：
-	 * 时间：Oct 29, 2008 4:43:16 PM
-	 * @param source 源字符串
-	 * @return
-	 */
-	public static String a2c(String source)
-	{
-		char strChar[] = source.toCharArray();
-		byte abyte0[] = new byte[strChar.length];
-		for (int i = 0; i < strChar.length; i++)
-		{
-			abyte0[i] = (byte) (strChar[i] & HEX_FF);
-		}
-		
-		try
-		{
-			ByteToCharConverter bytetocharconverter = ByteToCharConverter.getConverter("gb2312");
-			return new String(bytetocharconverter.convertAll(abyte0));
-		}
-		catch (Exception exception)
-		{
-			logger.error("字符串转换出错", exception);
-		}
-		return source;
-	}
 	
-	/**
-	 * 描述：
-	 * 作者：
-	 * 时间：Oct 29, 2008 4:44:37 PM
-	 * @param source 源字符串
-	 * @return
-	 */
-	public static String c2a(String source)
-	{
-		try
-		{
-			CharToByteConverter chartobyteconverter = CharToByteConverter.getConverter("gb2312");
-			byte abyte0[] = chartobyteconverter.convertAll(source.toCharArray());
-			char ac[] = new char[abyte0.length];
-			for (int i = 0; i < abyte0.length; i++)
-			{
-				ac[i] = (char) (abyte0[i] & HEX_FF);
-			}
-			
-			return new String(ac);
-		}
-		catch (Exception exception)
-		{
-			logger.error("字符串转换出错", exception);
-		}
-		return source;
-	}
 	
 	/**
 	 * 把字符串转换为gb2312编码
