@@ -1,10 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://www.springframework.org/schema/beans
-http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-<bean id="helloWorld" class="io.github.sruby.spring.helloword.HelloWorld">
-	<property name="message" value="hello world"></property>
-</bean>
+<!-- 如果你有太多具有相同名称的初始化或者销毁方法的 Bean，那么你不需要在每一个 bean 上声明初始化方法和销毁方法 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	default-init-method="init" default-destroy-method="destroy">
+
+
+	<!-- 该作用域将 bean 的定义的限制在每一个 Spring IoC 容器中的一个单一实例(默认)。 -->
+	<bean id="helloWorld" class="io.github.sruby.spring.bean.HelloWorld"
+		scope="singleton" init-method="init" destroy-method="destroy">
+		<property name="message" value="hello world"></property>
+	</bean>
+
+	<bean id="helloWorld2" class="io.github.sruby.spring.bean.HelloWorld2"
+		scope="prototype">
+		<property name="message" value="hello world"></property>
+	</bean>
+	<!-- bean后置处理器 -->
+	<bean class="io.github.sruby.spring.bean.beanpostprocessor.InitHelloWorld" />
+
+	<bean id="helloIndia" class="io.github.sruby.spring.bean.HelloIndia"
+		parent="helloWorld">
+		<property name="message1" value="Hello India!" />
+		<property name="message2" value="Namaste India!" />
+	</bean>
+
+	<!-- Definition for textEditor bean -->
+	<bean id="textEditor" class="io.github.sruby.spring.di.constructorbased.TextEditor">
+		<constructor-arg ref="spellChecker" />
+	</bean>
+	<!-- Definition for spellChecker bean -->
+	<bean id="spellChecker" class="io.github.sruby.spring.di.constructorbased.SpellChecker">
+	</bean>
+
 </beans>

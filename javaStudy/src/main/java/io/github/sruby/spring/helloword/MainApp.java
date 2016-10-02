@@ -3,6 +3,8 @@ package io.github.sruby.spring.helloword;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import io.github.sruby.spring.bean.HelloWorld;
+
 /**
  * spring入门
  * 第一步是我们使用框架 API ClassPathXmlApplicationContext() 来创建应用程序的上下文。这个 API 加
@@ -22,18 +24,4 @@ public class MainApp
 	}
 }
 
-class HelloWorld
-{
-	private String message;
 
-	public void getMessage()
-	{
-		System.out.println("message:"+message);
-	}
-
-	
-	public void setMessage(String message)
-	{
-		this.message = message;
-	}
-}
