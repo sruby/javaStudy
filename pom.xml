@@ -57,7 +57,6 @@
 		<dependency>
 			<groupId>commons-httpclient</groupId>
 			<artifactId>commons-httpclient</artifactId>
-			<name>HttpClient</name>
 			<version>3.1</version>
 		</dependency>
 		<dependency>
