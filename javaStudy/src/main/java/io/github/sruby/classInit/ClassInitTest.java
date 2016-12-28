@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
-  * 类和对象初始化过程：静态变量初始化和static代码块执行-》成员变量初始化-》构造函数执行
- * 静态变量和静态代码块初始化优先级按照代码顺序
+  * 类和对象初始化过程：静态变量或静态方法初始化和static代码块执行-》成员变量初始化-》构造函数执行
+ * 静态变量、方法和静态代码块初始化优先级按照代码顺序
  * @author sruby on 2016年12月27日 下午10:58:53
  */
 public class ClassInitTest

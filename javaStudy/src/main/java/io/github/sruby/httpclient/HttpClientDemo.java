@@ -48,7 +48,7 @@ public class HttpClientDemo
 	{
 		// 创建参数队列    
 		List<NameValuePair> formparams = new ArrayList<NameValuePair>();
-		formparams.add(new BasicNameValuePair("content", "佰佳盛连锁超市，地址:南头中山东街。现象:每天高音喇叭持续叫卖。污染程度:影响正常作息。持续时间:晚上7:00开始，晚上22:00结束。"));
+		formparams.add(new BasicNameValuePair("content", "content"));
 		formparams.add(new BasicNameValuePair("location", "113.922912%2C22.54331"));
 		formparams.add(new BasicNameValuePair("anonymous", "1"));
 		formparams.add(new BasicNameValuePair("address", URLDecoder.decode("%E5%8D%97%E5%B1%B1%E5%8C%BA%E4%B8%AD%E5%B1%B1%E4%B8%9C%E8%A1%97%E5%8D%97%E5%A4%B4%E5%8F%A4%E5%9F%8E%E5%9E%A3")));
