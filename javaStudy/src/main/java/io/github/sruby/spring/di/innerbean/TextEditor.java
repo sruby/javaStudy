@@ -4,7 +4,9 @@ import io.github.sruby.spring.di.constructorbased.SpellChecker;
 
 public class TextEditor
 {
-	
+	/**
+	 * 必须要有对应的set方法
+	 */
 	private SpellChecker spellChecker;
 	
 	// a setter method to inject the dependency.
