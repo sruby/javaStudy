@@ -15,7 +15,6 @@ public class Logging
 	* all the methods available. So advice will be called
 	* for all the methods.
 	*/
-	
 	@Pointcut("execution(* io.github.sruby.spring.aop.xml.*.*(..))")
 	private void selectAll()
 	{
