@@ -113,5 +113,16 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
 	<!-- Definition for logging aspect -->
 	<bean id="logging" class="io.github.sruby.spring.aop.xml.Logging" />
 	<bean id="logging2" class="io.github.sruby.spring.aop.annotate.Logging" />
+	<!-- 积分业务前置处理实现类 -->
+	<bean id="loginServicePointHandle" class="io.github.sruby.annotation.point.LoginServicePointHandle" />
+	<bean id="pointAnnotationAnalysis" class="io.github.sruby.annotation.point.PointAnnotationAnalysis" />
+	<!-- 积分业务处理切面 -->
+	<!-- <aop:config>
+		<aop:aspect id="pointAnnotationAnalysisAop" ref="pointAnnotationAnalysis">
+			<aop:pointcut id="pointBusiness"
+				expression="@annotation(io.github.sruby.annotation.point.PointAnnotation)" />
+			<aop:after pointcut-ref="pointBusiness" method="analysis" />
+		</aop:aspect>
+	</aop:config> -->
 
 </beans>
