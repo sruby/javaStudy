@@ -3,6 +3,7 @@ package io.github.sruby.annotation.point;
 import java.lang.reflect.Method;
 
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ApplicationObjectSupport;
 
@@ -10,10 +11,8 @@ import org.springframework.context.support.ApplicationObjectSupport;
  * 积分注解解析
  * @author liuwf on May 6, 2017 3:20:45 PM
  */
-@Aspect
 public class PointAnnotationAnalysis extends ApplicationObjectSupport
 {
-	
 	public void analysis(Class<?> clazz)
 	{
 		//获取类的所有method
