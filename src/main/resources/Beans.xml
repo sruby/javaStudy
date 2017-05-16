@@ -116,13 +116,14 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
 	<!-- 积分业务前置处理实现类 -->
 	<bean id="loginServicePointHandle" class="io.github.sruby.annotation.point.LoginServicePointHandle" />
 	<bean id="pointAnnotationAnalysis" class="io.github.sruby.annotation.point.PointAnnotationAnalysis" />
+	<bean id="loginService" class="io.github.sruby.annotation.point.LoginService"></bean>
 	<!-- 积分业务处理切面 -->
-	<!-- <aop:config>
+	<aop:config>
 		<aop:aspect id="pointAnnotationAnalysisAop" ref="pointAnnotationAnalysis">
 			<aop:pointcut id="pointBusiness"
-				expression="@annotation(io.github.sruby.annotation.point.PointAnnotation)" />
+				expression="execution(@annotation(io.github.sruby.annotation.point.PointAnnotation))" />
 			<aop:after pointcut-ref="pointBusiness" method="analysis" />
 		</aop:aspect>
-	</aop:config> -->
+	</aop:config>
 
 </beans>
