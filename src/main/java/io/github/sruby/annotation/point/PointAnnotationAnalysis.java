@@ -4,6 +4,8 @@ import java.lang.reflect.Method;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ApplicationObjectSupport;
 
@@ -13,8 +15,11 @@ import org.springframework.context.support.ApplicationObjectSupport;
  */
 public class PointAnnotationAnalysis extends ApplicationObjectSupport
 {
+	private Logger logger = LoggerFactory.getLogger(PointAnnotationAnalysis.class);
+	
 	public void analysis(Class<?> clazz)
 	{
+		logger.debug("analysis start");
 		//获取类的所有method
 		Method[] methods = clazz.getMethods();
 		for (Method method : methods)
@@ -35,6 +40,6 @@ public class PointAnnotationAnalysis extends ApplicationObjectSupport
 				loginServicePointHandle.invoke(pointRuleNo);
 			}
 		}
-		
+		logger.debug("analysis end");
 	}
 }

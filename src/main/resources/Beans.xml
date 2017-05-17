@@ -89,7 +89,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
 		</property>
 	</bean>
 
-	<!-- <aop:config>
+	<aop:config>
 		<aop:aspect id="log" ref="logging">
 			<aop:pointcut id="selectAll"
 				expression="execution(* io.github.sruby.spring.aop.xml*.*(..))" />
@@ -100,7 +100,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
 			<aop:after-throwing pointcut-ref="selectAll"
 				throwing="ex" method="AfterThrowingAdvice" />
 		</aop:aspect>
-	</aop:config> -->
+	</aop:config>
 	<!-- Definition for student bean -->
 	
 	<!-- 使用aop注解 -->
@@ -120,9 +120,11 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
 	<!-- 积分业务处理切面 -->
 	<aop:config>
 		<aop:aspect id="pointAnnotationAnalysisAop" ref="pointAnnotationAnalysis">
-			<aop:pointcut id="pointBusiness"
-				expression="execution(@annotation(io.github.sruby.annotation.point.PointAnnotation))" />
-			<aop:after pointcut-ref="pointBusiness" method="analysis" />
+			<!-- 通知方法 analysis有参数，则需要增加arg-names属性，expression需要增加 and args(clazz)条件-->
+			<aop:pointcut id="pointBusiness" 
+				expression="execution(* io.github.sruby.annotation.point.*.*(..)) and args(clazz)" />
+			<aop:before pointcut-ref="pointBusiness" arg-names="clazz" method="analysis" />
+			<aop:after pointcut-ref="pointBusiness" arg-names="clazz" method="analysis" />
 		</aop:aspect>
 	</aop:config>
 
