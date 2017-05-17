@@ -1,7 +1,5 @@
 package io.github.sruby.annotation.point;
 
-import io.github.sruby.spring.aop.xml.Student;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
