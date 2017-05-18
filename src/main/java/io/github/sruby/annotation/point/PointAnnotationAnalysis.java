@@ -17,8 +17,9 @@ public class PointAnnotationAnalysis extends ApplicationObjectSupport
 {
 	private Logger logger = LoggerFactory.getLogger(PointAnnotationAnalysis.class);
 	
-	public void analysis(Class<?> clazz)
+	public void analysis()
 	{
+		Class<?> clazz = LoginService.class;
 		logger.debug("analysis start");
 		//获取类的所有method
 		Method[] methods = clazz.getMethods();

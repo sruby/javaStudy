@@ -88,11 +88,27 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
 			</props>
 		</property>
 	</bean>
-
+	<!-- 使用aop注解 -->
+	<!-- <aop:aspectj-autoproxy/> -->
+	
+	<bean id="student" class="io.github.sruby.spring.aop.xml.Student">
+		<property name="name" value="Zara" />
+		<property name="age" value="11" />
+	</bean>
+	<bean id="student2" class="io.github.sruby.annotation.point.Student">
+		<property name="name" value="Zara" />
+		<property name="age" value="11" />
+	</bean>
+	<!-- Definition for logging aspect -->
+	<bean id="logging" class="io.github.sruby.spring.aop.xml.Logging" />
+	<bean id="logging2" class="io.github.sruby.spring.aop.annotate.Logging" />
+	
 	<aop:config>
 		<aop:aspect id="log" ref="logging">
 			<aop:pointcut id="selectAll"
 				expression="execution(* io.github.sruby.spring.aop.xml*.*(..))" />
+			<!-- <aop:pointcut id="selectAll" 
+				expression="execution(* io.github.sruby.annotation.point*.*(..))" /> -->
 			<aop:before pointcut-ref="selectAll" method="beforeAdvice" />
 			<aop:after pointcut-ref="selectAll" method="afterAdvice" />
 			<aop:after-returning pointcut-ref="selectAll"
@@ -103,29 +119,22 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
 	</aop:config>
 	<!-- Definition for student bean -->
 	
-	<!-- 使用aop注解 -->
-	<aop:aspectj-autoproxy/>
-	
-	<bean id="student" class="io.github.sruby.spring.aop.xml.Student">
-		<property name="name" value="Zara" />
-		<property name="age" value="11" />
-	</bean>
-	<!-- Definition for logging aspect -->
-	<bean id="logging" class="io.github.sruby.spring.aop.xml.Logging" />
-	<bean id="logging2" class="io.github.sruby.spring.aop.annotate.Logging" />
-	<!-- 积分业务前置处理实现类 -->
+	<!-- 积分业务前置处理实现类start -->
+	<!-- 积分业务处理切面 -->
+	<!-- <aop:config>
+		<aop:aspect id="pointAnnotationAnalysisAop" ref="pointAnnotationAnalysis">
+			通知方法 analysis有参数，则需要增加arg-names属性，expression需要增加 and args(clazz)条件
+			<aop:pointcut id="pointBusiness" 
+				expression="execution(* io.github.sruby.annotation.point.*.*(..)) and args(clazz)" />
+			<aop:after pointcut-ref="pointBusiness" arg-names="clazz" method="analysis" />
+			<aop:pointcut id="pointBusiness" 
+				expression="execution(* io.github.sruby.annotation.point*.*(..))" />
+			<aop:after pointcut-ref="pointBusiness" method="analysis" />
+		</aop:aspect>
+	</aop:config> -->
 	<bean id="loginServicePointHandle" class="io.github.sruby.annotation.point.LoginServicePointHandle" />
 	<bean id="pointAnnotationAnalysis" class="io.github.sruby.annotation.point.PointAnnotationAnalysis" />
 	<bean id="loginService" class="io.github.sruby.annotation.point.LoginService"></bean>
-	<!-- 积分业务处理切面 -->
-	<aop:config>
-		<aop:aspect id="pointAnnotationAnalysisAop" ref="pointAnnotationAnalysis">
-			<!-- 通知方法 analysis有参数，则需要增加arg-names属性，expression需要增加 and args(clazz)条件-->
-			<aop:pointcut id="pointBusiness" 
-				expression="execution(* io.github.sruby.annotation.point.*.*(..)) and args(clazz)" />
-			<aop:before pointcut-ref="pointBusiness" arg-names="clazz" method="analysis" />
-			<aop:after pointcut-ref="pointBusiness" arg-names="clazz" method="analysis" />
-		</aop:aspect>
-	</aop:config>
+	<!-- 积分业务前置处理实现类end -->
 
 </beans>
