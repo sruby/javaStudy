@@ -1,5 +1,7 @@
 package io.github.sruby.annotation.point;
 
+import io.github.sruby.annotation.OutPackageBusiness;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -18,5 +20,7 @@ public class Client
 		ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
 		LoginService loginService = (LoginService) context.getBean("loginService");
 		loginService.login();
+//		OutPackageBusiness outPackageBusiness = (OutPackageBusiness) context.getBean("outPackageBusiness");
+//		outPackageBusiness.test();
 	}
 }

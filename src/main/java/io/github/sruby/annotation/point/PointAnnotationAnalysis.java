@@ -2,6 +2,7 @@ package io.github.sruby.annotation.point;
 
 import java.lang.reflect.Method;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
@@ -17,10 +18,12 @@ public class PointAnnotationAnalysis extends ApplicationObjectSupport
 {
 	private Logger logger = LoggerFactory.getLogger(PointAnnotationAnalysis.class);
 	
-	public void analysis()
+	public void analysis(JoinPoint joinPoint)
 	{
-		Class<?> clazz = LoginService.class;
 		logger.debug("analysis start");
+		//获取目标对象
+		Object target = joinPoint.getTarget();
+		Class<?> clazz = target.getClass();
 		//获取类的所有method
 		Method[] methods = clazz.getMethods();
 		for (Method method : methods)
