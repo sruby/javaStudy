@@ -88,7 +88,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
 			</props>
 		</property>
 	</bean>
-	<!-- 使用aop注解 -->
+	<!-- 启用@AspectJ注解支持 -->
 	<!-- <aop:aspectj-autoproxy/> -->
 	
 	<bean id="student" class="io.github.sruby.spring.aop.xml.Student">
@@ -106,9 +106,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
 	<aop:config>
 		<aop:aspect id="log" ref="logging">
 			<aop:pointcut id="selectAll"
-				expression="execution(* io.github.sruby.spring.aop.xml*.*(..))" />
-			<!-- <aop:pointcut id="selectAll" 
-				expression="execution(* io.github.sruby.annotation.point*.*(..))" /> -->
+				expression="execution(* io.github.sruby.spring.aop.xml.*.*(..))" />
 			<aop:before pointcut-ref="selectAll" method="beforeAdvice" />
 			<aop:after pointcut-ref="selectAll" method="afterAdvice" />
 			<aop:after-returning pointcut-ref="selectAll"
@@ -121,20 +119,23 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
 	
 	<!-- 积分业务前置处理实现类start -->
 	<!-- 积分业务处理切面 -->
-	<!-- <aop:config>
+	<aop:config>
 		<aop:aspect id="pointAnnotationAnalysisAop" ref="pointAnnotationAnalysis">
-			通知方法 analysis有参数，则需要增加arg-names属性，expression需要增加 and args(clazz)条件
+			<!-- 通过方法持有的注解匹配，所有持有PointAnnotation注解的方法都会被拦截 -->
 			<aop:pointcut id="pointBusiness" 
-				expression="execution(* io.github.sruby.annotation.point.*.*(..)) and args(clazz)" />
-			<aop:after pointcut-ref="pointBusiness" arg-names="clazz" method="analysis" />
-			<aop:pointcut id="pointBusiness" 
-				expression="execution(* io.github.sruby.annotation.point*.*(..))" />
+				expression="execution(@io.github.sruby.annotation.point.PointAnnotation * *(..))" />
+				
+				<!-- 根据接口匹配 -->
+<!-- 			<aop:pointcut id="pointBusiness" 
+				expression="execution(* io.github.sruby.annotation.point.PointRelationsBusiness+.*(..))" /> -->
+				
 			<aop:after pointcut-ref="pointBusiness" method="analysis" />
 		</aop:aspect>
-	</aop:config> -->
+	</aop:config>
 	<bean id="loginServicePointHandle" class="io.github.sruby.annotation.point.LoginServicePointHandle" />
 	<bean id="pointAnnotationAnalysis" class="io.github.sruby.annotation.point.PointAnnotationAnalysis" />
 	<bean id="loginService" class="io.github.sruby.annotation.point.LoginService"></bean>
+	<bean id="outPackageBusiness" class="io.github.sruby.annotation.OutPackageBusiness"></bean>
 	<!-- 积分业务前置处理实现类end -->
 
 </beans>
