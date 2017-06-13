@@ -2,17 +2,43 @@
 <web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee" version="2.4">
 	<display-name>Spring MVC Application</display-name>
+
+	<!-- filter配置start -->
+	<filter>
+		<filter-name>DemoFilter</filter-name>
+		<filter-class>io.github.sruby.filter.DemoFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>DemoFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- filter配置end -->
+
+	<!-- servletWeb start -->
 	<servlet>
 		<servlet-name>HelloWeb</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	<!--  <servlet-mapping> 标签表明哪些 URLs 将被 DispatcherServlet 处理。这里所有以/greeting开头的 HTTP
-	 请求将由HelloWeb DispatcherServlet处理。 -->
+	<!-- <servlet-mapping> 标签表明哪些 URLs 将被 DispatcherServlet 处理。这里所有以/greeting开头的 
+		HTTP 请求将由HelloWeb DispatcherServlet处理。 -->
 	<servlet-mapping>
 		<servlet-name>HelloWeb</servlet-name>
 		<url-pattern>/greeting</url-pattern>
 	</servlet-mapping>
+	<!-- servletWeb end -->
+	
+	<!-- InvokeFilterServlet start -->
+	<servlet>
+		<servlet-name>invokeFilter</servlet-name>
+		<servlet-class>io.github.sruby.servlet.InvokeFilterServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>invokeFilter</servlet-name>
+		<url-pattern>/invokeFilter</url-pattern>
+	</servlet-mapping>
+	<!-- InvokeFilterServlet end -->
 
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
@@ -22,14 +48,19 @@
 		<welcome-file>index.jsp</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-	<!-- 如果你不想使用默认文件名 [servlet-name]-servlet.xml 和默认位置 webapp/WEB-INF ，你可以通过在web.xml
-	 文件中添加 servlet 监听器 ContextLoaderListener 自定义该文件的名称和位置 -->
+	<!-- 如果你不想使用默认文件名 [servlet-name]-servlet.xml 和默认位置 webapp/WEB-INF ，你可以通过在web.xml 
+		文件中添加 servlet 监听器 ContextLoaderListener 自定义该文件的名称和位置 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/HelloWeb-servlet.xml</param-value>
 	</context-param>
+	<!-- <listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener> -->
 	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+		<listener-class>io.github.sruby.servlet.ServletContextDemo
+		</listener-class>
 	</listener>
 </web-app>
  
