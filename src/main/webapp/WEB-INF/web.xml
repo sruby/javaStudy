@@ -54,13 +54,13 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/HelloWeb-servlet.xml</param-value>
 	</context-param>
-	<!-- <listener>
+	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener
 		</listener-class>
-	</listener> -->
-	<listener>
+	</listener>
+	<!-- <listener>
 		<listener-class>io.github.sruby.servlet.ServletContextDemo
 		</listener-class>
-	</listener>
+	</listener> -->
 </web-app>
  
