@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * https://spring.io/guides/gs/accessing-data-jpa/#initial
  * https://www.ibm.com/developerworks/cn/opensource/os-cn-spring-jpa/
+ * http://www.cnblogs.com/dreamroute/p/5173896.html
  * test
  * @author liuwf on Jun 24, 2017 6:21:42 PM
  */

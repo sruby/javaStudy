@@ -59,9 +59,12 @@
 			<version>3.1</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.apache.httpcomponents</groupId>
-		    <artifactId>httpclient</artifactId>
-		    <version>4.5.2</version>
+			    
+			<groupId>org.apache.httpcomponents</groupId>
+			    
+			<artifactId>httpclient</artifactId>
+			    
+			<version>4.5.2</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
@@ -121,46 +124,61 @@
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/javax.el/el-api -->
 		<dependency>
-		    <groupId>javax.el</groupId>
-		    <artifactId>el-api</artifactId>
-		    <version>2.2.1-b04</version>
+			<groupId>javax.el</groupId>
+			<artifactId>el-api</artifactId>
+			<version>2.2.1-b04</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->
 		<dependency>
-		    <groupId>org.yaml</groupId>
-		    <artifactId>snakeyaml</artifactId>
-		    <version>1.17</version>
+			<groupId>org.yaml</groupId>
+			<artifactId>snakeyaml</artifactId>
+			<version>1.17</version>
 		</dependency>
 		<dependency>
-		   <groupId>org.springframework.data.build</groupId>
-		   <artifactId>spring-data-java8-stub</artifactId>
-		   <version>1.4.0.RELEASE</version>
+			<groupId>org.springframework.data.build</groupId>
+			<artifactId>spring-data-java8-stub</artifactId>
+			<version>1.4.0.RELEASE</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all -->
 		<dependency>
-		    <groupId>org.codehaus.groovy</groupId>
-		    <artifactId>groovy-all</artifactId>
-		    <version>2.4.7</version>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+			<version>2.4.7</version>
 		</dependency>
 		<dependency>
-		  <groupId>org.slf4j</groupId>
-		  <artifactId>slf4j-log4j12</artifactId>
-		  <version>1.7.22</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.22</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.quartz-scheduler</groupId>
-		    <artifactId>quartz</artifactId>
-		    <version>2.2.1</version>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.2.1</version>
 		</dependency>
 		<dependency>
-	        <groupId>org.springframework.data</groupId>
-	        <artifactId>spring-data-jpa</artifactId>
-	        <version>1.11.4.RELEASE</version>
-	    </dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>1.11.4.RELEASE</version>
+		</dependency>
 		<dependency>
-	        <groupId>org.hibernate</groupId>
+			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>4.3.11.Final</version>
-	    </dependency>
+		</dependency>
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz-jobs</artifactId>
+			<version>2.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>4.2.3.RELEASE</version>
+		</dependency>
 	</dependencies>
 </project>

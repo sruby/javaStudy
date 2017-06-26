@@ -7,7 +7,7 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 http://www.springframework.org/schema/aop
 http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
 	<!-- 数据库连接 -->
-    <context:property-placeholder location="classpath:your-config.properties" ignore-unresolvable="true" />
+    <location="classpath:your-config.properties" ignore-unresolvable="true" />
     <!-- service包 -->
     <context:component-scan base-package="your service package" />
     <!-- 使用cglib进行动态代理 -->
