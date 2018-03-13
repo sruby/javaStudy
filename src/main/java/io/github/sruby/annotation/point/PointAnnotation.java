@@ -17,5 +17,4 @@ public @interface PointAnnotation
 {
 	String pointRuleNo() default "";
 	String beforeClass() default "";
-	
 }
