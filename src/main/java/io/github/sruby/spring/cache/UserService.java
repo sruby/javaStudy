@@ -3,20 +3,33 @@ package io.github.sruby.spring.cache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 
 
 public class UserService
 {
 	private Logger logger = LoggerFactory.getLogger(UserService.class);
+	private User user = new User();
 	
 	//缓存到name为cache1的缓存对象中
 	@Cacheable(value="cache1")
 	public User findUser()
 	{
-		logger.info("findUser start");
-		return new User(1, "cacheName", "20", "china");
+		logger.info("findUser set cache");
+		user = new User(1, "cacheName", "20", "china");
+		return user;
 	}
+	
+	//缓存到name为cache1的缓存对象中
+	@Cacheable(value="cache1")
+	public User findUserByUserId(int userId)
+	{
+		logger.info("findUser set cache by userId");
+		user = new User(userId, "cacheName", "20", "china");
+		return user;
+	}
+	
 	
 	/**
 	 * 默认key生成： （所以findUser2和findUser是使用的同一个key）
@@ -31,12 +44,33 @@ public class UserService
 	public User findUser2()
 	{
 		logger.info("findUser2 start");
-		return new User(1, "cacheName2", "202", "china2");
+		user = new User(1, "cacheName2", "202", "china2");
+		return user;
 	}
 	
-	@CacheEvict(value="cache1",key="")
+	/**
+	 * 缺省key清除所有缺省key的缓存
+	 * @author sruby on 2018年3月14日 下午2:27:29
+	 */
+	@CacheEvict(value="cache1")
 	public void updateUser()
 	{
-		logger.info("updateUser start");
+		logger.info("updateUser cache evict");
+	}
+	
+	/**
+	 * 按照key来清除特定缓存
+	 * @author sruby on 2018年3月14日 下午2:27:29
+	 */
+	@CacheEvict(value="cache1", key="#user.getId")
+	public void updateUserByUserId()
+	{
+		logger.info("updateUser cache evict");
+	}
+	
+	@CachePut(value="cache1")
+	public void putUser()
+	{
+		logger.info("putUser cache put");
 	}
 }
