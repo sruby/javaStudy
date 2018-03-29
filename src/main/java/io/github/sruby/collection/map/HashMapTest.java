@@ -11,9 +11,21 @@ public class HashMapTest
 	@Test
 	public void testPut()
 	{
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("1", "1");
-		String a = map.get("1");
+		Map map = new HashMap();
+		
+		for(int i = 0; i<16;i++)
+		{
+			map.put(i, "1");
+		}
+		
+		//以对象作为key
+		map.put(new Object(), null);
+		String a = (String) map.get("1");
+		
+		byte a1 = 127;
+		byte b = 1;
+//		b = a + b; // error : cannot convert from int to byte
+		b += a1; // ok
 	}
 	
 	@Test
