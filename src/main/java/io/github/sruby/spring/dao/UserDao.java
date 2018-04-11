@@ -3,27 +3,29 @@ package io.github.sruby.spring.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import io.github.sruby.spring.dao.po.User;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.stereotype.Repository;
+
+import io.github.sruby.spring.dao.po.User;
 
 /**
  * 用户数据持久化
  * @author sruby on 2018年3月30日 下午5:58:23
  */
-@Repository
+@Repository("userDao")
 public class UserDao
 {
+    /**
+     * Autowired自动注入
+     */
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	private final static String MATCH_COUNT_SQL = "select 1 from t_user t where t.name = ? and t.password = ?";
-	private final static String USER_BY_NAME = "select * from t_user t where t.name = ?";
-	private final static String UPDATE_USER_LASTIP_BY_NAME = "update t_user t set lastip = ? where t.name = ?";
+	private final static String MATCH_COUNT_SQL = "select count(1) from t_user t where t.user_name = ? and t.password = ?";
+	private final static String UPDATE_USER_LASTIP_BY_NAME = "update t_user t set last_ip = ? where t.user_id = ?";
+	private final static String GET_USER_BY_USERNAME = "select * from t_user t where t.user_id =?";
 	
 	/**
 	 * 用户密码校验
@@ -32,17 +34,40 @@ public class UserDao
 	 */
 	public int getMatchCount(String name,String password)
 	{
+	    /**
+	     * queryForObject使用时返回的结果不能为空，否则会报错。
+	     */
 		Integer result = jdbcTemplate.queryForObject(MATCH_COUNT_SQL, new Object[]{name,password}, int.class);
 		return result;
 	}
 	
-	public User findUserByName(String name)
+	/**
+	 * 修改用户登录信息
+	 * @param lastId
+	 * @param userId
+	 */
+	public void updateUserLastIpByUserid(String lastId,int userId)
 	{
-		return null;
+	    jdbcTemplate.update(UPDATE_USER_LASTIP_BY_NAME, new Object[]{lastId,userId });
 	}
 	
-	public void updateUserLastIpByName()
+	/**
+	 * 根据用户名获取用户信息
+	 * @param userName
+	 * @return
+	 */
+	public User findUserByUserName(String userName)
 	{
-		
+	    final User user = new User();
+        jdbcTemplate.query(GET_USER_BY_USERNAME, new Object[] { userName },
+                new RowCallbackHandler() {
+                    public void processRow(ResultSet rs) throws SQLException {
+                        user.setUserId(rs.getInt("user_id"));
+                        user.setUserName(userName);
+                        user.setCredits(rs.getInt("credits"));
+                    }
+                });
+        return user;
 	}
+	
 }
