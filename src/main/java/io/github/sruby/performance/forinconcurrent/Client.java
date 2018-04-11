@@ -22,7 +22,7 @@ public class Client
 	@Test
 	public void tester()
 	{
-		long startTime = System.currentTimeMillis();
+		final long startTime = System.currentTimeMillis();
 		/**
 		 * 回调函数用来做计时
 		 */
@@ -52,7 +52,7 @@ public class Client
 	@Test
 	public void testInFor()
 	{
-		long startTime = System.currentTimeMillis();
+		final long startTime = System.currentTimeMillis();
 		/**
 		 * 回调函数用来做计时
 		 */
