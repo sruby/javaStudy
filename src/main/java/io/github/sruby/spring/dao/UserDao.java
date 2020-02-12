@@ -56,7 +56,7 @@ public class UserDao
 	 * @param userName
 	 * @return
 	 */
-	public User findUserByUserName(String userName)
+	public User findUserByUserName(final String userName)
 	{
 	    final User user = new User();
         jdbcTemplate.query(GET_USER_BY_USERNAME, new Object[] { userName },
