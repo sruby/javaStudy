@@ -1,7 +1,9 @@
 package io.github.sruby.concurrent.geek;
 
 import io.github.sruby.concurrent.geek.BO.Account;
+import io.github.sruby.concurrent.geek.BO.AccountWithWait;
 import lombok.SneakyThrows;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -92,6 +94,29 @@ public class DeadLockDemo {
         TimeUnit.SECONDS.sleep(6);
         System.out.println(accountA);
         System.out.println(accountB);
+    }
+
+    @SneakyThrows
+    @Test
+    public void transportOnceLock2WithWait(){
+        AccountWithWait accountA = new AccountWithWait(200,"A");
+        AccountWithWait accountB = new AccountWithWait(200,"B");
+        Thread threadA = new Thread(() -> {
+            accountA.transportOnceLock2(accountB, 100);
+        });
+        Thread threadB = new Thread(() -> {
+            accountB.transportOnceLock2(accountA, 200);
+        });
+
+        threadA.start();
+        threadB.start();
+
+        TimeUnit.SECONDS.sleep(6);
+        System.out.println(accountA);
+        System.out.println(accountB);
+
+        Assert.assertEquals(accountA.getBalance(),300);
+        Assert.assertEquals(accountB.getBalance(),100);
     }
 
     @SneakyThrows
