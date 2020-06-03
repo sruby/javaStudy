@@ -96,6 +96,7 @@ public class Account {
     /**
      * 解决死锁方式一：一次性申请所有的资源，而不是分开申请
      * dead lock
+     * 如果是A-》B，B-》C的场景则会出现线程安全问题
      * @param target
      * @param amt
      */
@@ -122,20 +123,21 @@ public class Account {
      */
     @SneakyThrows
     public void transportOnceLock2(Account target, int amt) {
+        while (!Allocator.getInstance().apply(this, target)){
+
+        }
         try {
-            while (Allocator.getInstance().apply(this, target)){
-                //lock out account
-                synchronized (this){
-                    log.debug("sleep before,this:{},target:{}",this,target);
-                    TimeUnit.SECONDS.sleep(1);
-                    log.debug("sleep after,this:{},target:{}",this,target);
-                    //lock in account
-                    synchronized (target){
-                        log.debug("target start:"+target);
-                        this.balance = balance - amt;
-                        target.setBalance(target.getBalance() + amt);
-                        log.debug("target end:"+target);
-                    }
+            //lock out account
+            synchronized (this){
+                log.debug("sleep before,this:{},target:{}",this,target);
+                TimeUnit.SECONDS.sleep(1);
+                log.debug("sleep after,this:{},target:{}",this,target);
+                //lock in account
+                synchronized (target){
+                    log.debug("target start:"+target);
+                    this.balance = balance - amt;
+                    target.setBalance(target.getBalance() + amt);
+                    log.debug("target end:"+target);
                 }
             }
         } finally {
@@ -166,6 +168,7 @@ public class Account {
         Account small = new Account();
         Account large = new Account();
 
+
         if (this.accountId.compareTo(target.accountId) > 0 ){
             large = this;
             small = target;
@@ -173,7 +176,6 @@ public class Account {
             large = target;
             small = this;
         }
-
         //lock out account
         synchronized (small){
             log.debug("sleep before,this:{},target:{}",this,target);
