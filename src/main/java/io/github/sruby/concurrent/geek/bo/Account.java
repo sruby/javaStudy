@@ -1,4 +1,4 @@
-package io.github.sruby.concurrent.geek.BO;
+package io.github.sruby.concurrent.geek.bo;
 
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;

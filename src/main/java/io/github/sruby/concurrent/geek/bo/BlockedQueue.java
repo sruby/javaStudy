@@ -1,4 +1,4 @@
-package io.github.sruby.concurrent.geek.BO;
+package io.github.sruby.concurrent.geek.bo;
 
 import lombok.Data;
 import lombok.SneakyThrows;
