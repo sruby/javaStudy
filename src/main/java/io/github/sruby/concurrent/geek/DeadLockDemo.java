@@ -1,7 +1,7 @@
 package io.github.sruby.concurrent.geek;
 
-import io.github.sruby.concurrent.geek.BO.Account;
-import io.github.sruby.concurrent.geek.BO.AccountWithWait;
+import io.github.sruby.concurrent.geek.bo.Account;
+import io.github.sruby.concurrent.geek.bo.AccountWithWait;
 import lombok.SneakyThrows;
 import org.junit.Assert;
 import org.junit.Test;
