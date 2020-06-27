@@ -7,7 +7,8 @@ package io.github.sruby.designpattern.singleton;
  * 这种方法也是《Effective Java》上所推荐的。
  * 
  * 加载一个类时，其内部类不会同时被加载。一个类被加载，
- * 当且仅当其某个静态成员（静态域、构造器、静态方法等）被调用时发生。 
+ * 当且仅当其某个静态成员（静态域、构造器、静态方法等）被调用时发生。
+ * https://blog.csdn.net/mnb65482/article/details/80458571
  * @author sruby on 2016年8月23日 上午12:08:31
  */
 public class StaticNestedClassSingleton
