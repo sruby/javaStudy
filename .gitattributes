@@ -1,1 +1,5 @@
-*.java linguist-language=java
+* linguist-vendored
+*.java linguist-vendored=false
+*.js linguist-detectable=false
+*.css linguist-detectable=false
+*.java linguist-detectable=true
