@@ -20,6 +20,7 @@ class CacheTest {
     }
 
     @Test
-    void get() {
+    void test() {
+
     }
 }
