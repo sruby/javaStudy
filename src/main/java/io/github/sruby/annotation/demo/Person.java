@@ -1,5 +1,8 @@
 package io.github.sruby.annotation.demo;
 
+import lombok.Data;
+
+@Data
 public class Person
 {
 	@Name("阿特罗伯斯")
