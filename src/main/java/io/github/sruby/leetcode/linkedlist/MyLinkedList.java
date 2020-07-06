@@ -1,11 +1,11 @@
-package io.github.sruby.arithmetic.linkedlist;
+package io.github.sruby.leetcode.linkedlist;
 
 /**
 * @Description: leetcode Singly Linked List
 * @author: sruby
 * @Date: 2020-7-5 17:12
 */
-class MyLinkedList {
+public class MyLinkedList {
     private Node head;
     private int count;
     class Node{
