@@ -1,5 +1,6 @@
 package io.github.sruby.arithmetic.linkedlist;
 
+import io.github.sruby.leetcode.linkedlist.MyLinkedList;
 import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
