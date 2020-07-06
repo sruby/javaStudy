@@ -41,9 +41,19 @@ public class MyCircularQueueTest {
      */
     @Test
     public void test2() {
+        myCircularQueue = new MyCircularQueue(6);
         String[] array = {"MyCircularQueue","enQueue","Rear","Rear","deQueue","enQueue","Rear","deQueue","Front","deQueue","deQueue","deQueue"};
         String param = "[[6],[6],[],[],[],[5],[],[],[],[],[],[]]";
-
+        myCircularQueue.enQueue(6);
+        myCircularQueue.Rear();
+        myCircularQueue.Rear();
+        myCircularQueue.deQueue();
+        myCircularQueue.Rear();
+        myCircularQueue.deQueue();
+        myCircularQueue.Front();
+        myCircularQueue.deQueue();
+        myCircularQueue.deQueue();
+        myCircularQueue.deQueue();
 
     }
 
@@ -69,5 +79,10 @@ public class MyCircularQueueTest {
 
     @Test
     public void isFull() {
+    }
+
+    @Test
+    public void test11(){
+        System.out.println(-1%2);
     }
 }
