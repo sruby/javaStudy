@@ -32,23 +32,34 @@ class MyCircularQueue {
         if (isEmpty()){
             return false;
         }
+        array[headIndex] = null;
         headIndex = (headIndex + 1) % size;
         return true;
     }
     
     /** Get the front item from the queue. */
     public int Front() {
+        if (isEmpty()){
+            return -1;
+        }
         return array[headIndex];
     }
     
     /** Get the last item from the queue. */
     public int Rear() {
-        return array[tailIndex];
+        if (isEmpty()){
+            return -1;
+        }
+        if(tailIndex - 1 >= 0){
+            return array[tailIndex-1];
+        }else {
+            return array[size - 1];
+        }
     }
     
     /** Checks whether the circular queue is empty or not. */
     public boolean isEmpty() {
-        if (headIndex == tailIndex){
+        if ((headIndex == tailIndex) && array[headIndex] ==null){
             return true;
         }
         return false;
@@ -56,7 +67,7 @@ class MyCircularQueue {
     
     /** Checks whether the circular queue is full or not. */
     public boolean isFull() {
-        if ((tailIndex+1)%this.size == headIndex){
+        if ((headIndex == tailIndex) && array[headIndex] !=null){
             return true;
         }
         return false;
