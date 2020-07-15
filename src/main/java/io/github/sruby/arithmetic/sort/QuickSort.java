@@ -23,8 +23,18 @@ public class QuickSort {
 
     private int partition(int[] nums, int start, int end) {
         int pivot = nums[end];
-        
-
-        return 0;
+        int i = start;
+        for (int j = start; i < end; j++){
+            if (nums[j] < pivot){
+                int temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+                i++;
+            }
+        }
+        int temp = nums[i];
+        nums[i] = pivot;
+        nums[end] = temp;
+        return i;
     }
 }
